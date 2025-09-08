@@ -3,11 +3,20 @@ import { FlatList } from "react-native";
 import { CATEGORIES } from "../data/dummy-data";
 import CategoryGridTile from "../components/CategoryGridTile";
 
-function renderCategoryItem({ item }) {
-  return <CategoryGridTile title={item.title} color={item.color} />;
-}
+function CategoriesScreen({ navigation }) {
+  function renderCategoryItem({ item }) {
+    function pressHandler() {
+      navigation.navigate("MealsOverview");
+    }
 
-function CategoriesScreen() {
+    return (
+      <CategoryGridTile
+        title={item.title}
+        color={item.color}
+        onPress={pressHandler}
+      />
+    );
+  }
   return (
     <FlatList
       data={CATEGORIES}
